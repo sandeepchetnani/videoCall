@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Video, Users, ArrowRight, Plus } from "lucide-react";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "https://video-call-f8cz.vercel.app";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "https://videocall-41do.onrender.com";
 
 export default function Lobby({ onJoin }) {
   const [userName, setUserName] = useState("");
