@@ -1,7 +1,7 @@
 {
-  "name": "videocall-frontend",
+  "name": "wavely-frontend",
   "version": "1.0.0",
-  "description": "Multi-user video call frontend",
+  "description": "Wavely — beautiful multi-user video calls",
   "type": "module",
   "scripts": {
     "dev": "vite",

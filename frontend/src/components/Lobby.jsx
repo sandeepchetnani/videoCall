@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Video, Users, ArrowRight, Plus } from "lucide-react";
+import { Users, ArrowRight, Plus } from "lucide-react";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "https://videocall-41do.onrender.com";
 
@@ -60,11 +60,13 @@ export default function Lobby({ onJoin }) {
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#0284c7] rounded-2xl mb-4 shadow-lg shadow-[#0284c7]/30">
-            <Video className="w-8 h-8 text-white" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 shadow-lg shadow-[#0284c7]/30 bg-gradient-to-br from-[#0284c7] to-[#0ea5e9]">
+            <span className="text-3xl leading-none select-none">🌊</span>
           </div>
-          <h1 className="text-3xl font-bold text-[#0d1b2a] tracking-tight">VideoCall</h1>
-          <p className="text-[#4a6080] mt-1 text-sm">Connect with anyone, anywhere</p>
+          <h1 className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-[#0d1b2a] via-[#0284c7] to-[#38bdf8] bg-clip-text text-transparent">
+            Wavely
+          </h1>
+          <p className="text-[#4a6080] mt-1 text-sm">Crystal-clear video calls, anytime</p>
         </div>
 
         {/* Card */}
@@ -155,7 +157,7 @@ export default function Lobby({ onJoin }) {
 
         <div className="flex items-center justify-center gap-2 mt-5 text-[#94b4cc] text-xs">
           <Users className="w-3.5 h-3.5" />
-          <span>Supports up to 6+ participants</span>
+          <span>Wavely supports up to 6+ participants</span>
         </div>
       </div>
     </div>
