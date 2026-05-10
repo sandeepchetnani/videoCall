@@ -355,11 +355,11 @@ export default function Room({ roomId, userName, onLeave }) {
       isVideoOff={!(peerStates[focusedPeer.socketId]?.videoEnabled ?? true)}
     />
   ) : (
-    <div className="w-full h-full flex flex-col items-center justify-center gap-3 bg-slate-900">
-      <div className="w-20 h-20 rounded-full bg-slate-700 flex items-center justify-center">
-        <Users className="w-10 h-10 text-slate-400" />
+    <div className="w-full h-full flex flex-col items-center justify-center gap-3 bg-[#f0f4f9]">
+      <div className="w-20 h-20 rounded-full bg-[#e0f2fe] border-2 border-[#7dd3fc] flex items-center justify-center">
+        <Users className="w-10 h-10 text-[#0284c7]" />
       </div>
-      <p className="text-slate-400 text-sm">Waiting for others to join…</p>
+      <p className="text-[#4a6080] text-sm font-medium">Waiting for others to join…</p>
     </div>
   );
 
@@ -408,7 +408,7 @@ export default function Room({ roomId, userName, onLeave }) {
   if (totalCount <= 2) {
     // ── WhatsApp PiP layout (1 or 2 users) ──
     return (
-      <div className="fixed inset-0 bg-black overflow-hidden">
+      <div className="fixed inset-0 bg-[#f0f4f9] overflow-hidden">
         <div className="absolute inset-0">
           {fullscreenContent}
         </div>
@@ -419,17 +419,17 @@ export default function Room({ roomId, userName, onLeave }) {
             onPointerDown={onPipPointerDown}
             onPointerMove={onPipPointerMove}
             onPointerUp={onPipPointerUp}
-            className="absolute z-30 rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 cursor-grab active:cursor-grabbing select-none"
+            className="absolute z-30 rounded-2xl overflow-hidden shadow-2xl border-2 border-[#7dd3fc]/60 cursor-grab active:cursor-grabbing select-none"
             style={{ width: PIP_W, height: PIP_H, left: resolvedPos.x, top: resolvedPos.y, touchAction: "none" }}
           >
             {pipContent}
             <button
               onPointerDown={(e) => e.stopPropagation()}
               onClick={(e) => { e.stopPropagation(); setIsSwapped((s) => !s); }}
-              className="absolute top-1.5 left-1.5 z-40 bg-black/60 hover:bg-black/80 rounded-full p-1 transition"
+              className="absolute top-1.5 left-1.5 z-40 bg-white/80 hover:bg-white rounded-full p-1 transition shadow"
               title="Swap view"
             >
-              <ArrowLeftRight className="w-3 h-3 text-white" />
+              <ArrowLeftRight className="w-3 h-3 text-[#0284c7]" />
             </button>
           </div>
         )}
@@ -453,7 +453,7 @@ export default function Room({ roomId, userName, onLeave }) {
   if (totalCount === 3) {
     // ── 3-user layout: 2 on top row, 1 centered below ──
     return (
-      <div className="fixed inset-0 bg-black flex flex-col gap-1 p-1 pb-24 overflow-hidden">
+      <div className="fixed inset-0 bg-[#e8f0f7] flex flex-col gap-1 p-1 pb-24 overflow-hidden">
         <div className="flex gap-1 flex-1">
           {allTiles.slice(0, 2).map((t) => (
             <div key={t.key} className="relative flex-1 rounded-xl overflow-hidden">
@@ -488,7 +488,7 @@ export default function Room({ roomId, userName, onLeave }) {
 
   // ── 4+ users: 2-column grid ──
   return (
-    <div className="fixed inset-0 bg-black p-1 pb-24 overflow-y-auto">
+    <div className="fixed inset-0 bg-[#e8f0f7] p-1 pb-24 overflow-y-auto">
       <div className="grid grid-cols-2 gap-1 h-full" style={{ gridAutoRows: "calc(50vh - 3rem)" }}>
         {allTiles.map((t) => (
           <div key={t.key} className="relative rounded-xl overflow-hidden">
