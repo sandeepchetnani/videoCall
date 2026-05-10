@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Mic, MicOff, Video, VideoOff, Phone, Copy, Check, RefreshCw, MonitorUp, MonitorOff } from "lucide-react";
 
+const canScreenShare = typeof navigator !== "undefined" &&
+  typeof navigator.mediaDevices !== "undefined" &&
+  typeof navigator.mediaDevices.getDisplayMedia === "function";
+
 export default function Controls({ roomId, audioEnabled, videoEnabled, onToggleAudio, onToggleVideo, onLeave, onFlipCamera, isFlipping, onScreenShare, isSharingScreen }) {
   const [copied, setCopied] = useState(false);
 
@@ -67,17 +71,27 @@ export default function Controls({ roomId, audioEnabled, videoEnabled, onToggleA
             <RefreshCw className={`w-5 h-5 ${isFlipping ? "animate-spin" : ""}`} />
           </button>
 
-          <button
-            onClick={onScreenShare}
-            className={`w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-md ${
-              isSharingScreen
-                ? "bg-[#0284c7] hover:bg-[#0369a1] text-white"
-                : "bg-[#e0f2fe] hover:bg-[#bae6fd] text-[#0d1b2a]"
-            }`}
-            title={isSharingScreen ? "Stop Sharing" : "Share Screen"}
-          >
-            {isSharingScreen ? <MonitorOff className="w-5 h-5" /> : <MonitorUp className="w-5 h-5" />}
-          </button>
+          {canScreenShare ? (
+            <button
+              onClick={onScreenShare}
+              className={`w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-md ${
+                isSharingScreen
+                  ? "bg-[#0284c7] hover:bg-[#0369a1] text-white"
+                  : "bg-[#e0f2fe] hover:bg-[#bae6fd] text-[#0d1b2a]"
+              }`}
+              title={isSharingScreen ? "Stop Sharing" : "Share Screen"}
+            >
+              {isSharingScreen ? <MonitorOff className="w-5 h-5" /> : <MonitorUp className="w-5 h-5" />}
+            </button>
+          ) : (
+            <button
+              disabled
+              className="w-12 h-12 rounded-full flex items-center justify-center bg-gray-100 text-gray-300 opacity-50 cursor-not-allowed shadow-md"
+              title="Screen sharing is not supported on this device"
+            >
+              <MonitorUp className="w-5 h-5" />
+            </button>
+          )}
         </div>
 
         {isSharingScreen && (

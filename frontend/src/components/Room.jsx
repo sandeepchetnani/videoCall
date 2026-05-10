@@ -246,7 +246,15 @@ export default function Room({ roomId, userName, onLeave }) {
     }
 
     try {
-      const screenStream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: false });
+      const screenStream = await navigator.mediaDevices.getDisplayMedia({
+        video: {
+          cursor: "always",
+          selfBrowserSurface: "include",
+          surfaceSwitching: "include",
+          displaySurface: "browser",
+        },
+        audio: false,
+      });
       const screenTrack = screenStream.getVideoTracks()[0];
 
       const oldVideoTrack = localStreamRef.current.getVideoTracks()[0];
