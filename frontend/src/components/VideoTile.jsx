@@ -10,6 +10,13 @@ export function RemoteVideoTile({ stream, userName, isMuted, isVideoOff, mirror 
     }
   }, [stream]);
 
+  useEffect(() => {
+    if (!isVideoOff && videoRef.current && stream) {
+      videoRef.current.srcObject = stream;
+      videoRef.current.play().catch(() => {});
+    }
+  }, [isVideoOff, stream]);
+
   const showAvatar = !stream || isVideoOff;
 
   return (
@@ -19,7 +26,7 @@ export function RemoteVideoTile({ stream, userName, isMuted, isVideoOff, mirror 
         autoPlay
         playsInline
         className="w-full h-full object-cover"
-        style={{ display: showAvatar ? "none" : "block", transform: mirror ? "scaleX(-1)" : undefined }}
+        style={{ opacity: showAvatar ? 0 : 1, transform: mirror ? "scaleX(-1)" : undefined }}
       />
       {showAvatar && (
         <div className="flex flex-col items-center gap-3">
@@ -50,6 +57,13 @@ export function PipVideoTile({ stream, userName, isMuted, isVideoOff, mirror = t
     }
   }, [stream]);
 
+  useEffect(() => {
+    if (!isVideoOff && videoRef.current && stream) {
+      videoRef.current.srcObject = stream;
+      videoRef.current.play().catch(() => {});
+    }
+  }, [isVideoOff, stream]);
+
   const showAvatar = !stream || isVideoOff;
 
   return (
@@ -60,7 +74,7 @@ export function PipVideoTile({ stream, userName, isMuted, isVideoOff, mirror = t
         muted
         playsInline
         className="w-full h-full object-cover"
-        style={{ display: showAvatar ? "none" : "block", transform: mirror ? "scaleX(-1)" : undefined }}
+        style={{ opacity: showAvatar ? 0 : 1, transform: mirror ? "scaleX(-1)" : undefined }}
       />
       {showAvatar && (
         <div className="flex flex-col items-center gap-1">

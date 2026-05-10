@@ -17,7 +17,7 @@ export default function Controls({ roomId, audioEnabled, videoEnabled, onToggleA
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col items-center gap-3 pb-6 pt-3 pointer-events-none">
       {/* Frosted glass bar */}
-      <div className="pointer-events-auto flex flex-col items-center gap-3 bg-white/90 backdrop-blur-md border border-[#bae6fd]/60 rounded-3xl px-6 py-4 shadow-xl shadow-[#0d1b2a]/10">
+      <div className="pointer-events-auto flex flex-col items-center gap-3 px-6 py-4">
 
         {/* Room ID chip */}
         <button
