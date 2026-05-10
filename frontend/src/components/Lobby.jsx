@@ -56,21 +56,21 @@ export default function Lobby({ onJoin }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#f0f4f9] px-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#f0f4f9] px-4 py-6">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 shadow-lg shadow-[#0284c7]/30 bg-gradient-to-br from-[#0284c7] to-[#0ea5e9]">
             <span className="text-3xl leading-none select-none">🌊</span>
           </div>
-          <h1 className="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-[#0d1b2a] via-[#0284c7] to-[#38bdf8] bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-[#0d1b2a] via-[#0284c7] to-[#38bdf8] bg-clip-text text-transparent">
             Wavely
           </h1>
           <p className="text-[#4a6080] mt-1 text-sm">Crystal-clear video calls, anytime</p>
         </div>
 
         {/* Card */}
-        <div className="bg-white rounded-3xl p-6 shadow-xl shadow-[#0d1b2a]/8 border border-[#e0f2fe]">
+        <div className="bg-white rounded-3xl p-5 sm:p-6 shadow-xl shadow-[#0d1b2a]/8 border border-[#e0f2fe]">
 
           {/* Tab switcher */}
           <div className="flex rounded-2xl bg-[#f0f4f9] p-1 mb-6">

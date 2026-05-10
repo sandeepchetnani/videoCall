@@ -30,14 +30,14 @@ export function RemoteVideoTile({ stream, userName, isMuted, isVideoOff, mirror 
       />
       {showAvatar && (
         <div className="flex flex-col items-center gap-3">
-          <div className="w-24 h-24 rounded-full bg-[#1a3a5c] border-2 border-[#7dd3fc] flex items-center justify-center">
-            <User className="w-12 h-12 text-[#7dd3fc]" />
+          <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-[#1a3a5c] border-2 border-[#7dd3fc] flex items-center justify-center">
+            <User className="w-8 h-8 sm:w-12 sm:h-12 text-[#7dd3fc]" />
           </div>
-          <span className="text-white text-lg font-semibold tracking-tight">{userName}</span>
+          <span className="text-white text-sm sm:text-lg font-semibold tracking-tight">{userName}</span>
         </div>
       )}
       <div className="absolute bottom-0 left-0 right-0 px-3 py-2 flex items-center justify-between bg-gradient-to-t from-black/70 to-transparent pointer-events-none">
-        <span className="text-white text-sm font-medium drop-shadow">{userName}</span>
+        <span className="text-white text-xs sm:text-sm font-medium drop-shadow truncate max-w-[70%]">{userName}</span>
         {isMuted && (
           <span className="bg-red-500/90 rounded-full p-1">
             <MicOff className="w-3 h-3 text-white" />

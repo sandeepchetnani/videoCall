@@ -153,7 +153,6 @@ export default function Room({ roomId, userName, onLeave }) {
       t.enabled = enabled;
     });
     setVideoEnabled(enabled);
-    setLocalVideoKey((k) => k + 1);
     socket.emit("toggle-video", { roomId, enabled });
   }, [videoEnabled, roomId]);
 
@@ -300,7 +299,8 @@ export default function Room({ roomId, userName, onLeave }) {
   const [isSwapped, setIsSwapped] = useState(false);
 
   // PiP drag state
-  const PIP_W = 110, PIP_H = 155;
+  const isMobile = window.innerWidth < 640;
+  const PIP_W = isMobile ? 80 : 110, PIP_H = isMobile ? 112 : 155;
   const [pipPos, setPipPos] = useState({ x: null, y: null }); // null = default top-right
   const dragRef = useRef({ dragging: false, startX: 0, startY: 0, origX: 0, origY: 0 });
   const pipRef = useRef(null);
@@ -461,7 +461,7 @@ export default function Room({ roomId, userName, onLeave }) {
   if (totalCount === 3) {
     // ── 3-user layout: 2 on top row, 1 centered below ──
     return (
-      <div className="fixed inset-0 bg-[#e8f0f7] flex flex-col gap-1 p-1 pb-24 overflow-hidden">
+      <div className="fixed inset-0 bg-[#e8f0f7] flex flex-col gap-1 p-1 pb-20 sm:pb-24 overflow-hidden">
         <div className="flex gap-1 flex-1">
           {allTiles.slice(0, 2).map((t) => (
             <div key={t.key} className="relative flex-1 rounded-xl overflow-hidden">
@@ -496,7 +496,7 @@ export default function Room({ roomId, userName, onLeave }) {
 
   // ── 4+ users: 2-column grid ──
   return (
-    <div className="fixed inset-0 bg-[#e8f0f7] p-1 pb-24 overflow-y-auto">
+    <div className="fixed inset-0 bg-[#e8f0f7] p-1 pb-20 sm:pb-24 overflow-y-auto">
       <div className="grid grid-cols-2 gap-1 h-full" style={{ gridAutoRows: "calc(50vh - 3rem)" }}>
         {allTiles.map((t) => (
           <div key={t.key} className="relative rounded-xl overflow-hidden">

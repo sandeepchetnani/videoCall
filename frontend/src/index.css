@@ -27,6 +27,15 @@ video {
   display: none;
 }
 
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+button, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
 .video-grid-1 { grid-template-columns: 1fr; }
 .video-grid-2 { grid-template-columns: repeat(2, 1fr); }
 .video-grid-3 { grid-template-columns: repeat(2, 1fr); }
